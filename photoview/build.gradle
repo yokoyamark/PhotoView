@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
+// for JitPack
+group = 'com.github.yokoyamark.PhotoView'
+
 android {
     compileSdkVersion rootProject.ext.sdkVersion
 
@@ -13,7 +16,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.appcompat:appcompat:1.5.1"
 }
 
 afterEvaluate {
@@ -22,9 +25,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                group = 'com.github.chrisbanes'
+                group = 'com.github.yokoyamark'
                 artifactId = 'PhotoView'
-                version = '2.3.0'
+                version = '0.0.1'
 
                 // Adds javadocs and sources as separate jars.
                 artifact androidJavadocsJar
@@ -33,7 +36,7 @@ afterEvaluate {
                 pom {
                     name = 'PhotoView'
                     description = 'A simple ImageView that support zooming, both by Multi-touch gestures and double-tap.'
-                    url = 'https://github.com/Baseflow/PhotoView'
+                    url = 'https://github.com/yokoyamark/PhotoView'
                     licenses {
                         license {
                             name = 'The Apache License, Version 2.0'
@@ -47,9 +50,9 @@ afterEvaluate {
                         }
                     }
                     scm {
-                        connection = 'scm:git@github.com/chrisbanes/PhotoView.git'
-                        developerConnection = 'scm:git@github.com/chrisbanes/PhotoView.git'
-                        url = 'https://github.com/chrisbanes/PhotoView'
+                        connection = 'scm:git@github.com:yokoyamark/PhotoView.git'
+                        developerConnection = 'scm:git@github.com:yokoyamark/PhotoView.git'
+                        url = 'https://github.com/yokoyamark/PhotoView'
                     }
                 }
             }

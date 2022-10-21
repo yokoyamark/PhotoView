@@ -19,64 +19,65 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.5.1"
 }
 
+// for JitPack
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
 
-                group = 'com.github.yokoyamark'
+                groupId = 'com.github.yokoyamark'
                 artifactId = 'PhotoView'
-                version = '0.0.1'
+                version = '0.0.2'
 
                 // Adds javadocs and sources as separate jars.
-                artifact androidJavadocsJar
-                artifact(sourceJar)
+//                artifact androidJavadocsJar
+//                artifact(sourceJar)
 
-                pom {
-                    name = 'PhotoView'
-                    description = 'A simple ImageView that support zooming, both by Multi-touch gestures and double-tap.'
-                    url = 'https://github.com/yokoyamark/PhotoView'
-                    licenses {
-                        license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'chrisbanes'
-                            name = 'Chris Banes'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:git@github.com:yokoyamark/PhotoView.git'
-                        developerConnection = 'scm:git@github.com:yokoyamark/PhotoView.git'
-                        url = 'https://github.com/yokoyamark/PhotoView'
-                    }
-                }
+//                pom {
+//                    name = 'PhotoView'
+//                    description = 'A simple ImageView that support zooming, both by Multi-touch gestures and double-tap.'
+//                    url = 'https://github.com/yokoyamark/PhotoView'
+//                    licenses {
+//                        license {
+//                            name = 'The Apache License, Version 2.0'
+//                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                        }
+//                    }
+//                    developers {
+//                        developer {
+//                            id = 'chrisbanes'
+//                            name = 'Chris Banes'
+//                        }
+//                    }
+//                    scm {
+//                        connection = 'scm:git@github.com:yokoyamark/PhotoView.git'
+//                        developerConnection = 'scm:git@github.com:yokoyamark/PhotoView.git'
+//                        url = 'https://github.com/yokoyamark/PhotoView'
+//                    }
+//                }
             }
         }
     }
 }
 
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    android.libraryVariants.all { variant ->
-        if (variant.name == 'release') {
-            owner.classpath += variant.javaCompileProvider.get().classpath
-        }
-    }
-    exclude '**/R.html', '**/R.*.html', '**/index.html'
-}
-
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    archiveClassifier.set('javadoc')
-    from androidJavadocs.destinationDir
-}
-
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
-}
+//task androidJavadocs(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    android.libraryVariants.all { variant ->
+//        if (variant.name == 'release') {
+//            owner.classpath += variant.javaCompileProvider.get().classpath
+//        }
+//    }
+//    exclude '**/R.html', '**/R.*.html', '**/index.html'
+//}
+//
+//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+//    archiveClassifier.set('javadoc')
+//    from androidJavadocs.destinationDir
+//}
+//
+//task sourceJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier "sources"
+//}
